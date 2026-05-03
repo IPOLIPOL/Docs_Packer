@@ -9,9 +9,13 @@ It is designed for sharing document packages via email without relying on ZIP fi
 Docs_Packer is useful in situations where traditional file sharing methods fall short:
 
 **Email-first sharing** — When recipients have limited or no access to cloud platforms (SharePoint, Google Drive, Dropbox, etc.), or when you simply prefer sending everything as a single email attachment. One clean HTML file replaces a ZIP archive, which is merely a file container with no support for structured metadata or semantic organization.  
+
 **Controlled or restricted environments** — Ideal for clients, partners, or internal teams working in secure environments where external cloud links are blocked or discouraged.  
+
 **Custom presentation & navigation** — Even when cloud platforms are available, they often lack the flexibility you want. With Docs_Packer you fully control the layout, table columns, grouping, and descriptions. You can highlight important files, add context, or mirror your preferred folder structure visually.  
+
 **Repeatable document packages** — Perfect for recurring deliveries (project updates, monthly reports, training materials, audit packs, etc.). Just drop the latest files into the `input/` folder, run the tool, and you instantly get a fresh, professional HTML package. No need to write long explanatory emails — the table itself clearly shows what’s included and what’s new.  
+
 **Archival & offline access** — Creates a self-contained, future-proof archive that works completely offline and can be saved locally or stored for long-term reference.
 
 #### Why not just send a Zip archive?
@@ -50,11 +54,11 @@ This makes the output fully portable and independent of external systems.
 
 The files placed to the `input/` folder:   
 
-<img src="InputFiles.png" width="400">
+<img src="InputFiles.png" width="600">
 
 Resulting `.html` file: 
 
-<img src="Output.png" width="400">
+<img src="Output.png" width="600">
 
 ## Repository structure
 
