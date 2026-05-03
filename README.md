@@ -8,10 +8,10 @@ It is designed for sharing document packages via email without relying on ZIP fi
 
 Docs_Packer is useful in situations where traditional file sharing methods fall short:
 
-**Email-first sharing** — When recipients have limited or no access to cloud platforms (SharePoint, Google Drive, Dropbox, etc.), or when you simply prefer sending everything as a single email attachment. One clean HTML file replaces a ZIP archive, which is merely a file container with no support for structured metadata or semantic organization.
-**Controlled or restricted environments** — Ideal for clients, partners, or internal teams working in secure environments where external cloud links are blocked or discouraged.
-**Custom presentation & navigation** — Even when cloud platforms are available, they often lack the flexibility you want. With Docs_Packer you fully control the layout, table columns, grouping, and descriptions. You can highlight important files, add context, or mirror your preferred folder structure visually.
-**Repeatable document packages** — Perfect for recurring deliveries (project updates, monthly reports, training materials, audit packs, etc.). Just drop the latest files into the `input/` folder, run the tool, and you instantly get a fresh, professional HTML package. No need to write long explanatory emails — the table itself clearly shows what’s included and what’s new.
+**Email-first sharing** — When recipients have limited or no access to cloud platforms (SharePoint, Google Drive, Dropbox, etc.), or when you simply prefer sending everything as a single email attachment. One clean HTML file replaces a ZIP archive, which is merely a file container with no support for structured metadata or semantic organization.  
+**Controlled or restricted environments** — Ideal for clients, partners, or internal teams working in secure environments where external cloud links are blocked or discouraged.  
+**Custom presentation & navigation** — Even when cloud platforms are available, they often lack the flexibility you want. With Docs_Packer you fully control the layout, table columns, grouping, and descriptions. You can highlight important files, add context, or mirror your preferred folder structure visually.  
+**Repeatable document packages** — Perfect for recurring deliveries (project updates, monthly reports, training materials, audit packs, etc.). Just drop the latest files into the `input/` folder, run the tool, and you instantly get a fresh, professional HTML package. No need to write long explanatory emails — the table itself clearly shows what’s included and what’s new.  
 **Archival & offline access** — Creates a self-contained, future-proof archive that works completely offline and can be saved locally or stored for long-term reference.
 
 #### Why not just send a Zip archive?
@@ -35,8 +35,6 @@ A zip file forces the recipient to download and extract files before they can be
 
 This makes the experience significantly better for the recipient and reduces follow-up questions for the sender. Sender gets full creative control over how the documents are presented.
 
----
-
 ## How it works
 
 Docs_Packer embeds all input files directly into a single HTML file using Base64 encoding.
@@ -52,11 +50,11 @@ This makes the output fully portable and independent of external systems.
 
 The files placed to the `input/` folder:   
 
-<img src="InputFiles.png" width="1000">
+<img src="InputFiles.png" width="400">
 
 Resulting `.html` file: 
 
-<img src="Output.png" width="1000">
+<img src="Output.png" width="400">
 
 ## Repository structure
 
@@ -73,8 +71,6 @@ docs_packer/
 ├── input/             ← DROP YOUR FILES HERE
 └── output/            ← generated HTML bundle appears here
 ```
-
----
 
 ## Normal workflow — step by step
 
@@ -103,7 +99,7 @@ Example entry:
 ### Step 3 — Run the packer
 
 ```
-python pack_bundle.py --title "Framework Agreement Q2-2025"
+python pack_bundle.py --title "Very important documents Q2-2025"
 ```
 
 The script will:
@@ -125,8 +121,6 @@ Attach it to an email. The recipient:
 - Clicks Download on any row to save that file locally
 
 No internet connection, no installation, no unzipping required.
-
----
 
 ## Changing the table columns
 
@@ -154,8 +148,6 @@ Change the `"label"` value in `schema.py`. The key and all metadata stay the sam
 | `required` | yes      | `True` = every file entry must have this field     |
 | `type`     | yes      | `"text"`, `"date"`, or `"version"`                 |
 
----
-
 ## Validation — what is checked automatically
 
 Every run of `pack_bundle.py` checks:
@@ -177,8 +169,6 @@ Every run of `pack_bundle.py` checks:
 - A key in metadata is not defined in schema (will be ignored)
 - A file exists in `input/` but has no entry in metadata
 
----
-
 ## Command-line options
 
 ```
@@ -186,8 +176,6 @@ python pack_bundle.py --title "My Bundle"        # sets the page title (default:
 python pack_bundle.py --output custom_name.html  # sets the output filename
 python pack_bundle.py                            # uses defaults
 ```
-
----
 
 ## Running the program self-tests
 
@@ -199,15 +187,11 @@ python test_validate.py
 
 Expected output: `23/23 tests passed — all good.`
 
----
-
 ## Requirements
 
 - Python 3.7 or newer
 - No external packages required (standard library only)
 - Output file: any modern browser on Windows (Edge, Chrome, Firefox)
-
----
 
 ## File name rules and limitations
 
