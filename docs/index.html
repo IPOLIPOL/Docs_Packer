@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Docs_Packer — How It Works</title>
+<style>
+  :root {
+    --text: #172b3f;
+    --muted: #61758a;
+    --line: #9aaabd;
+    --card1: #f1f6ff;
+    --card2: #f1fbf7;
+    --card3: #f5f2ff;
+    --card4: #f0fafb;
+    --accent1: #4f88ee;
+    --accent2: #45b98a;
+    --accent3: #7b68d8;
+    --accent4: #35aebd;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    color: var(--text);
+    background: #fff;
+  }
+  main {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 70px 36px 80px;
+  }
+  h1 {
+    margin: 0;
+    text-align: center;
+    font-size: clamp(38px, 5vw, 64px);
+    letter-spacing: -2px;
+  }
+  .subtitle {
+    margin: 18px auto 62px;
+    text-align: center;
+    color: var(--muted);
+    font-size: clamp(18px, 2vw, 25px);
+  }
+  .flow {
+    display: grid;
+    grid-template-columns: 1fr 46px 1fr 46px 1fr 46px 1fr;
+    align-items: center;
+    gap: 0;
+  }
+  .card {
+    position: relative;
+    min-height: 420px;
+    padding: 48px 28px 34px;
+    border-radius: 18px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .card:nth-child(1) { background: var(--card1); }
+  .card:nth-child(3) { background: var(--card2); }
+  .card:nth-child(5) { background: var(--card3); }
+  .card:nth-child(7) { background: var(--card4); }
+
+  .number {
+    position: absolute;
+    top: -27px;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+    font-weight: 700;
+  }
+  .card:nth-child(1) .number { background: var(--accent1); }
+  .card:nth-child(3) .number { background: var(--accent2); }
+  .card:nth-child(5) .number { background: var(--accent3); }
+  .card:nth-child(7) .number { background: var(--accent4); }
+
+  h2 {
+    margin: 10px 0 18px;
+    font-size: 25px;
+  }
+  p {
+    margin: 0;
+    max-width: 290px;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: .92em;
+    color: var(--text);
+  }
+  .icon {
+    margin-top: auto;
+    padding-top: 34px;
+    height: 145px;
+    display: grid;
+    place-items: center;
+  }
+  .icon-box {
+    border: 2px solid #8da0b4;
+    border-radius: 10px;
+    width: 105px;
+    height: 85px;
+    background: white;
+    display: grid;
+    place-items: center;
+    font-family: ui-monospace, monospace;
+    font-size: 27px;
+  }
+  .folder {
+    width: 115px;
+    height: 78px;
+    border-radius: 8px;
+    background: #5d91ed;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-family: ui-monospace, monospace;
+    font-size: 18px;
+  }
+  .terminal {
+    width: 125px;
+    height: 82px;
+    border-radius: 9px;
+    background: #273447;
+    color: white;
+    display: grid;
+    place-items: center;
+    font-family: ui-monospace, monospace;
+    font-size: 26px;
+  }
+  .html-file {
+    width: 100px;
+    height: 115px;
+    border: 2px solid #8da0b4;
+    border-radius: 9px;
+    background: white;
+    display: grid;
+    place-items: center;
+    font-family: ui-monospace, monospace;
+    font-size: 19px;
+  }
+  .label {
+    margin-top: 12px;
+    font-family: ui-monospace, monospace;
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .arrow {
+    text-align: center;
+    color: var(--line);
+    font-size: 42px;
+    font-weight: 300;
+  }
+  .footer {
+    margin-top: 55px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 16px;
+  }
+  @media (max-width: 1050px) {
+    main { padding: 55px 24px; }
+    .flow { grid-template-columns: 1fr; gap: 55px; }
+    .arrow { transform: rotate(90deg); height: 20px; }
+    .card { min-height: 330px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Docs_Packer</h1>
+  <div class="subtitle">From a folder of documents to a single, self-contained HTML file.</div>
+
+  <section class="flow" aria-label="Docs_Packer workflow">
+    <article class="card">
+      <div class="number">1</div>
+      <h2>Define the structure</h2>
+      <p>Edit <code>schema.py</code> to define your table columns, metadata fields, and their types.</p>
+      <div class="icon">
+        <div class="icon-box">&lt;/&gt;</div>
+        <div class="label">schema.py</div>
+      </div>
+    </article>
+
+    <div class="arrow" aria-hidden="true">→</div>
+
+    <article class="card">
+      <div class="number">2</div>
+      <h2>Add your documents</h2>
+      <p>Drop documents into <code>input/</code> and describe each file in <code>metadata.py</code>.</p>
+      <div class="icon">
+        <div class="folder">input/</div>
+        <div class="label">metadata.py</div>
+      </div>
+    </article>
+
+    <div class="arrow" aria-hidden="true">→</div>
+
+    <article class="card">
+      <div class="number">3</div>
+      <h2>Run the tool</h2>
+      <p>Execute <code>pack_bundle.py</code>. Docs_Packer validates the configuration and builds the bundle.</p>
+      <div class="icon">
+        <div class="terminal">&gt;_</div>
+        <div class="label">pack_bundle.py</div>
+      </div>
+    </article>
+
+    <div class="arrow" aria-hidden="true">→</div>
+
+    <article class="card">
+      <div class="number">4</div>
+      <h2>Get your HTML bundle</h2>
+      <p>The result is a single self-contained HTML file containing your documents and their metadata.</p>
+      <div class="icon">
+        <div class="html-file">&lt;html&gt;</div>
+        <div class="label">output/</div>
+      </div>
+    </article>
+  </section>
+
+  <div class="footer">Define → Describe → Build → Share</div>
+</main>
+</body>
+</html>
