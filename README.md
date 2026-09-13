@@ -41,6 +41,8 @@ This makes the experience significantly better for the recipient and reduces fol
 
 ## How it works
 
+> Workflow overview: **<https://ipolipol.github.io/Docs_Packer/>**
+
 Docs_Packer embeds all input files directly into a single HTML file using Base64 encoding.
 
 The HTML file contains:
