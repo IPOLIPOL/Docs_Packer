@@ -1,4 +1,5 @@
-# Docs_Packer — Bundle Documents into a Single HTML File
+# Docs_Packer
+###### Bundle Documents into a Single HTML File
 
 Docs_Packer is a tool that converts a folder of documents (PDF, Word, Excel, images, etc.) into a single self-contained HTML file with an informative table and download links.
 
